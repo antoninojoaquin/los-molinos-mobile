@@ -10,6 +10,7 @@ import {
   Linking,
 } from "react-native";
 import { storage } from "../hooks/useStorage";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const CART_KEY = "cart";
 
@@ -64,7 +65,7 @@ export default function CartScreen() {
   if (cart.length === 0) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.emptyIcon}>🛒</Text>
+        <Ionicons name="cart-outline" size={86} color="#f97316" />
         <Text style={styles.emptyText}>Tu carrito está vacío</Text>
       </View>
     );
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#030712" },
   centered: { flex: 1, backgroundColor: "#030712", justifyContent: "center", alignItems: "center" },
   emptyIcon: { fontSize: 64, marginBottom: 12 },
-  emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 18, fontWeight: "600" },
+  emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 24, fontWeight: "600" },
   list: { padding: 16, gap: 12, marginTop : 64 },
   card: {
     flexDirection: "row",

@@ -106,7 +106,7 @@ export default function FavoritesScreen() {
   if (displayedProducts.length === 0) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.emptyIcon}>🤍</Text>
+        <Ionicons name="heart-dislike-outline" size={86} color="#f97316" />
         <Text style={styles.emptyText}>No tenés nada en favoritos</Text>
       </View>
     );
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#030712" },
   centered: { flex: 1, backgroundColor: "#030712", justifyContent: "center", alignItems: "center" },
   emptyIcon: { fontSize: 64, marginBottom: 12 },
-  emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 18, fontWeight: "600" },
+  emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 24, fontWeight: "600" },
   list: { padding: 12, marginTop: 64 },
   row: { justifyContent: "space-between", marginBottom: 12 },
   card: { width: "48%", height: 220, borderRadius: 20, overflow: "hidden", backgroundColor: "#1f2937" },
