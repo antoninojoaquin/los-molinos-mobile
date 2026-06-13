@@ -115,7 +115,7 @@ return (
 );
 }
 const styles = StyleSheet.create({
-  container: { padding: 24, paddingBottom: 40 },
+  container: { padding: 24, paddingBottom: 96 },
   label: {
     color: "#f97316",
     fontWeight: "600",

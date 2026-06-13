@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
-  ActivityIndicator,
   StyleSheet,
 } from "react-native";
 import { useFocusEffect } from "expo-router";
@@ -13,6 +12,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { storage } from "../hooks/useStorage";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import LottieView from "lottie-react-native";
 
 const FAVORITES_KEY = "favorites";
 const CART_KEY = "cart";
@@ -31,24 +31,6 @@ export default function FavoritesScreen() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [cart, setCart] = useState<any[]>([]);
   const [cooldownId, setCooldownId] = useState<string | null>(null);
-
-  useCallback(() => {
-    const fetchProducts = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const data = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Product[];
-        setProducts(data);
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -95,14 +77,19 @@ export default function FavoritesScreen() {
 
   const displayedProducts = products.filter((p) => favorites.includes(p.id));
 
-  if (loading) {
+    if (loading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size="large" color="#f97316" />
+        <LottieView
+          source={require("../../assets/loading.json")}
+          autoPlay
+          loop
+          style={{ width: 150, height: 150 }}
+          colorFilters={[{ keypath: "*", color: "#f97316" }]}
+        />
       </View>
     );
   }
-
   if (displayedProducts.length === 0) {
     return (
       <View style={styles.centered}>
@@ -166,7 +153,7 @@ const styles = StyleSheet.create({
   centered: { flex: 1, backgroundColor: "#030712", justifyContent: "center", alignItems: "center" },
   emptyIcon: { fontSize: 64, marginBottom: 12 },
   emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 24, fontWeight: "600" },
-  list: { padding: 12, marginTop: 64 },
+  list: { padding: 12, marginTop: 64, paddingBottom: 86 },
   row: { justifyContent: "space-between", marginBottom: 12 },
   card: { width: "48%", height: 220, borderRadius: 20, overflow: "hidden", backgroundColor: "#1f2937" },
   overlay: { ...StyleSheet.absoluteFill, backgroundColor: "rgba(0,0,0,0.45)" },

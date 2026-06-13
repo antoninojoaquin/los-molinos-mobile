@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   centered: { flex: 1, backgroundColor: "#030712", justifyContent: "center", alignItems: "center" },
   emptyIcon: { fontSize: 64, marginBottom: 12 },
   emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 24, fontWeight: "600" },
-  list: { padding: 16, gap: 12, marginTop : 64 },
+  list: { padding: 16, gap: 12, marginTop : 64, paddingBottom: 86 },
   card: {
     flexDirection: "row",
     alignItems: "center",

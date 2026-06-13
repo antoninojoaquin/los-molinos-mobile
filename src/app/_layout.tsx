@@ -6,9 +6,20 @@ export default function RootLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#030712",
-          borderTopColor: "#1f2937",
+          backgroundColor: "#1f2937",
+          position: "absolute",
+          bottom: 20,
+          borderRadius: 30,
+          paddingTop: 16,
+          height: 65,
+          borderTopWidth: 0,
+          elevation: 5,
+          shadowColor: "#000",
+          shadowOpacity: 0.2,
+          shadowOffset: { width: 0, height: 4 },
+          shadowRadius: 8,
         },
         tabBarActiveTintColor: "#f97316",
         tabBarInactiveTintColor: "#6b7280",
@@ -17,7 +28,6 @@ export default function RootLayout() {
       <Tabs.Screen
         name="products"
         options={{
-          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
@@ -26,7 +36,6 @@ export default function RootLayout() {
       <Tabs.Screen
         name="favorites"
         options={{
-          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="heart-outline" size={size} color={color} />
           ),
@@ -35,7 +44,6 @@ export default function RootLayout() {
       <Tabs.Screen
         name="cart"
         options={{
-          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cart-outline" size={size} color={color} />
           ),
@@ -44,7 +52,6 @@ export default function RootLayout() {
       <Tabs.Screen
         name="about"
         options={{
-          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="information-circle-outline" size={size} color={color} />
           ),
