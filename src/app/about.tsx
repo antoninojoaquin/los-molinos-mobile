@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import ContactSection from "../components/ContactSection";
 import UbicationSection from "../components/UbicationSection";
 

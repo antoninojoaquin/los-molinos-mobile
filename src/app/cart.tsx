@@ -99,7 +99,7 @@ export default function CartScreen() {
             <View style={styles.right}>
               <Text style={styles.subtotal}>${item.price * item.quantity}</Text>
               <TouchableOpacity onPress={() => removeItem(item.id)}>
-                <Text style={styles.trash}>🗑</Text>
+                <Ionicons name="trash-outline" size={24} color="#f97316" />
               </TouchableOpacity>
             </View>
           </View>

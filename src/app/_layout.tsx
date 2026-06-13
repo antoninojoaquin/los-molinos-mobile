@@ -15,27 +15,18 @@ export default function RootLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="products"
         options={{
-          title: "Inicio",
+          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="products"
-        options={{
-          title: "Productos",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="favorites"
         options={{
-          title: "Favoritos",
+          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="heart-outline" size={size} color={color} />
           ),
@@ -44,7 +35,7 @@ export default function RootLayout() {
       <Tabs.Screen
         name="cart"
         options={{
-          title: "Carrito",
+          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cart-outline" size={size} color={color} />
           ),
@@ -53,7 +44,7 @@ export default function RootLayout() {
       <Tabs.Screen
         name="about"
         options={{
-          title: "Nosotros",
+          title: "",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="information-circle-outline" size={size} color={color} />
           ),

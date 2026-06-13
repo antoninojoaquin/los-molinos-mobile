@@ -32,7 +32,6 @@ export default function ProductsScreen() {
   const [cart, setCart] = useState<any[]>([]);
   const [cooldownId, setCooldownId] = useState<string | null>(null);
 
-  // --- lógica idéntica a la web ---
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -80,7 +79,6 @@ export default function ProductsScreen() {
     setFavorites(updatedFavorites);
     await storage.set(FAVORITES_KEY, updatedFavorites);
   };
-  // --- fin lógica ---
 
   if (loading) {
     return (
@@ -101,8 +99,6 @@ export default function ProductsScreen() {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Image source={{ uri: item.imageUrl }} style={styles.image} />
-
-            {/* gradiente visual con overlay */}
             <View style={styles.overlay} />
 
             <TouchableOpacity
