@@ -25,6 +25,7 @@ type Product = {
   price: number;
   imageUrl: string;
   category: string;
+  stock: number;
 };
 
 export default function ProductsScreen() {
@@ -194,19 +195,21 @@ export default function ProductsScreen() {
                 color={favorites.includes(item.id) ? "#f97316" : "#fff"}
               />
             </TouchableOpacity>
-
+            {item.stock > 0 && item.stock <= 3 && (
+              <View style={styles.stockBadge}>
+                <Text style={styles.stockBadgeText}>¡Quedan {item.stock}!</Text>
+              </View>
+            )}
             <View style={styles.cardBottom}>
               <Text style={styles.category}>{item.category}</Text>
               <Text style={styles.name}>{item.name}</Text>
-
               <View style={styles.priceRow}>
                 <Text style={styles.price}>${item.price}</Text>
-
                 <TouchableOpacity
-                  disabled={cooldownId === item.id}
+                  disabled={cooldownId === item.id || item.stock === 0}
                   style={[
                     styles.cartBtn,
-                    cooldownId === item.id && styles.cartBtnDisabled,
+                    (cooldownId === item.id || item.stock === 0) && styles.cartBtnDisabled,
                   ]}
                   onPress={() => {
                     addToCart(item);
@@ -215,7 +218,7 @@ export default function ProductsScreen() {
                   }}
                 >
                   <Text style={styles.cartBtnText}>
-                    {cooldownId === item.id ? "✓" : "Agregar"}
+                    {item.stock === 0 ? "Sin stock" : cooldownId === item.id ? "✓" : "Agregar"}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -250,7 +253,7 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   cardBottom: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 10 },
-  category: { color: "#fdba74", fontSize: 10, textTransform: "uppercase", marginBottom: 2 },
+  category: { color: "#ffad42", fontSize: 10, textTransform: "uppercase", marginBottom: 2 },
   name: { color: "#fff", fontWeight: "bold", fontSize: 13, marginBottom: 6 },
   priceRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   price: {
@@ -306,5 +309,18 @@ const styles = StyleSheet.create({
   sortBtnActive: { backgroundColor: "#f97316", borderColor: "#f97316" },
   sortBtnText: { color: "#9ca3af", fontSize: 13 },
   sortBtnTextActive: { color: "#fff", fontWeight: "600" },
+  stockBadge: {
+    position: "absolute",
+    top: 8,
+    left: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    zIndex: 10,
+  },
+  stockBadgeText: {
+    color: "#ffb84d",
+    fontSize: 10,
+    fontWeight: "700",
+  },
 },
 );

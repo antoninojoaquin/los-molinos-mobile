@@ -20,16 +20,17 @@ type CartItem = {
   price: number;
   imageUrl: string;
   quantity: number;
+  stock: number;
 };
 
 export default function CartScreen() {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useFocusEffect(
-  useCallback(() => {
-    storage.get<CartItem[]>(CART_KEY).then((val) => setCart(val ?? []));
-  }, [])
-);
+    useCallback(() => {
+      storage.get<CartItem[]>(CART_KEY).then((val) => setCart(val ?? []));
+    }, [])
+  );
 
   const updateCart = async (updatedCart: CartItem[]) => {
     setCart(updatedCart);
@@ -38,7 +39,9 @@ export default function CartScreen() {
 
   const increaseQty = (id: string) => {
     updateCart(cart.map(item =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      item.id === id
+        ? { ...item, quantity: Math.min(item.quantity + 1, item.stock) }
+        : item
     ));
   };
 
@@ -91,7 +94,11 @@ export default function CartScreen() {
                 <Text style={styles.qtyBtnText}>−</Text>
               </TouchableOpacity>
               <Text style={styles.qty}>{item.quantity}</Text>
-              <TouchableOpacity style={styles.qtyBtn} onPress={() => increaseQty(item.id)}>
+              <TouchableOpacity
+                style={[styles.qtyBtn, item.quantity >= item.stock && styles.qtyBtnDisabled]}
+                disabled={item.quantity >= item.stock}
+                onPress={() => increaseQty(item.id)}
+              >
                 <Text style={styles.qtyBtnText}>+</Text>
               </TouchableOpacity>
             </View>
@@ -123,7 +130,7 @@ const styles = StyleSheet.create({
   centered: { flex: 1, backgroundColor: "#030712", justifyContent: "center", alignItems: "center" },
   emptyIcon: { fontSize: 64, marginBottom: 12 },
   emptyText: { color: "rgba(255,255,255,0.4)", fontSize: 24, fontWeight: "600" },
-  list: { padding: 16, gap: 12, marginTop : 64, paddingBottom: 86 },
+  list: { padding: 16, gap: 12, marginTop: 64, paddingBottom: 86 },
   card: {
     flexDirection: "row",
     alignItems: "center",
@@ -153,4 +160,5 @@ const styles = StyleSheet.create({
   total: { color: "#fff", fontSize: 24, fontWeight: "bold", marginBottom: 16 },
   checkoutBtn: { backgroundColor: "#f97316", borderRadius: 12, padding: 16, alignItems: "center" },
   checkoutText: { color: "#fff", fontWeight: "600", fontSize: 16 },
+  qtyBtnDisabled: { backgroundColor: "#1f2937", opacity: 0.4 },
 });
