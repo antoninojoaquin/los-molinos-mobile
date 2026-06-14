@@ -97,83 +97,83 @@ export default function ProductsScreen() {
     });
 
   if (loading) {
-  return (
-    <View style={styles.centered}>
-      <LottieView
-        source={require("../../assets/loading.json")}
-        autoPlay
-        loop
-        style={{ width: 150, height: 150 }}
-        colorFilters={[{ keypath: "*", color: "#f97316" }]}
-      />
-    </View>
-  );
-}
+    return (
+      <View style={styles.centered}>
+        <LottieView
+          source={require("../../assets/loading.json")}
+          autoPlay
+          loop
+          style={{ width: 150, height: 150 }}
+          colorFilters={[{ keypath: "*", color: "#f97316" }]}
+        />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      ListHeaderComponent={
-        <View style={styles.header}>
-          <View style={styles.searchBar}>
-            <Ionicons name="search-outline" size={18} color="#6b7280" />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Buscar productos..."
-              placeholderTextColor="#4b5563"
-              value={search}
-              onChangeText={setSearch}
-            />
-            {search.length > 0 && (
-              <TouchableOpacity onPress={() => setSearch("")}>
-                <Ionicons name="close-circle" size={18} color="#6b7280" />
-              </TouchableOpacity>
-            )}
-          </View>
+      <FlatList
+        ListHeaderComponent={
+          <View style={styles.header}>
+            <View style={styles.searchBar}>
+              <Ionicons name="search-outline" size={18} color="#6b7280" />
+              <TextInput
+                style={styles.searchInput}
+                placeholder="Buscar productos..."
+                placeholderTextColor="#4b5563"
+                value={search}
+                onChangeText={setSearch}
+              />
+              {search.length > 0 && (
+                <TouchableOpacity onPress={() => setSearch("")}>
+                  <Ionicons name="close-circle" size={18} color="#6b7280" />
+                </TouchableOpacity>
+              )}
+            </View>
 
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categories}>
-            <TouchableOpacity
-              style={[styles.chip, !selectedCategory && styles.chipActive]}
-              onPress={() => setSelectedCategory(null)}
-            >
-              <Text style={[styles.chipText, !selectedCategory && styles.chipTextActive]}>
-                Todos
-              </Text>
-            </TouchableOpacity>
-            {categories.map((cat) => (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categories}>
               <TouchableOpacity
-                key={cat}
-                style={[styles.chip, selectedCategory === cat && styles.chipActive]}
-                onPress={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                style={[styles.chip, !selectedCategory && styles.chipActive]}
+                onPress={() => setSelectedCategory(null)}
               >
-                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                  {cat}
+                <Text style={[styles.chipText, !selectedCategory && styles.chipTextActive]}>
+                  Todos
                 </Text>
               </TouchableOpacity>
-            ))}
-          </ScrollView>
+              {categories.map((cat) => (
+                <TouchableOpacity
+                  key={cat}
+                  style={[styles.chip, selectedCategory === cat && styles.chipActive]}
+                  onPress={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                >
+                  <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                    {cat}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
 
-          <View style={styles.sortRow}>
-            <Text style={styles.sortLabel}>Ordenar por precio:</Text>
-            <TouchableOpacity
-              style={[styles.sortBtn, sortOrder === "asc" && styles.sortBtnActive]}
-              onPress={() => setSortOrder(sortOrder === "asc" ? null : "asc")}
-            >
-              <Text style={[styles.sortBtnText, sortOrder === "asc" && styles.sortBtnTextActive]}>
-                Menor
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.sortBtn, sortOrder === "desc" && styles.sortBtnActive]}
-              onPress={() => setSortOrder(sortOrder === "desc" ? null : "desc")}
-            >
-              <Text style={[styles.sortBtnText, sortOrder === "desc" && styles.sortBtnTextActive]}>
-                Mayor
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.sortRow}>
+              <Text style={styles.sortLabel}>Ordenar por precio:</Text>
+              <TouchableOpacity
+                style={[styles.sortBtn, sortOrder === "asc" && styles.sortBtnActive]}
+                onPress={() => setSortOrder(sortOrder === "asc" ? null : "asc")}
+              >
+                <Text style={[styles.sortBtnText, sortOrder === "asc" && styles.sortBtnTextActive]}>
+                  Menor
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.sortBtn, sortOrder === "desc" && styles.sortBtnActive]}
+                onPress={() => setSortOrder(sortOrder === "desc" ? null : "desc")}
+              >
+                <Text style={[styles.sortBtnText, sortOrder === "desc" && styles.sortBtnTextActive]}>
+                  Mayor
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      }
-      <FlatList
+        }
         data={displayedProducts}
         keyExtractor={(item) => item.id}
         numColumns={2}
