@@ -5,8 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons"
 
@@ -38,7 +36,7 @@ const handleSubmit = async () => {
 if (enviado) {
   return (
     <View style={styles.successContainer}>
-      <Ionicons name="checkmark-circle" size={12} color="#22c55e" />
+      <Ionicons name="checkmark-circle" size={64} color="#22c55e" />
       <Text style={styles.successTitle}>¡Mensaje enviado!</Text>
       <Text style={styles.successText}>
         Gracias por escribirnos. Nos pondremos en contacto con vos a la brevedad.
@@ -56,9 +54,6 @@ if (enviado) {
 }
 
 return (
-  <KeyboardAvoidingView
-    behavior={Platform.OS === "ios" ? "padding" : "height"}
-  >
     <View style={styles.container}>
       <Text style={styles.label}>HABLEMOS</Text>
       <Text style={styles.title}>¿Tenés alguna duda?</Text>
@@ -111,7 +106,6 @@ return (
         </TouchableOpacity>
       </View>
     </View>
-  </KeyboardAvoidingView>
 );
 }
 const styles = StyleSheet.create({
@@ -163,7 +157,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 4,
   },
-  btnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+  btnText: { color: "#fff", fontWeight: "700", fontSize: 24 },
   successContainer: {
     padding: 40,
     alignItems: "center",
