@@ -37,7 +37,7 @@ Lógica integrada con Firestore que limita la cantidad según el stock real. Al 
 </div>
 
 ### 📍 About & Contacto
-Sección institucional con la ubicación física del local (mediante intent a Google Maps) y formulario de contacto directo.
+Sección institucional con la ubicación física del local (mediante intent a Google Maps) y formulario de contacto directo integrado con **Formspree** para la gestión ágil de correos electrónicos.
 <div align="center">
   <img src="assets/gifs/about.gif" width="300" alt="About y Contacto">
 </div>
