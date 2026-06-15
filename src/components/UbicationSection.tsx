@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Linking,
+  Image,
 } from "react-native";
 
 const MAPS_URL = "https://www.google.com/maps/place/Arist%C3%B3bulo+del+Valle+178,+B7100+Dolores,+Provincia+de+Buenos+Aires/@-36.3166699,-57.6791062,15.5z/data=!4m6!3m5!1s0x95999e42c33ed273:0x59b33785e775e2f8!8m2!3d-36.3172659!4d-57.6767455!16s%2Fg%2F11rg691ghs?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
@@ -12,6 +13,12 @@ const MAPS_URL = "https://www.google.com/maps/place/Arist%C3%B3bulo+del+Valle+17
 export default function UbicationScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <Image
+        source={require("../../assets/images/logo.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+      <View style={styles.divider} />
       <Text style={styles.label}>DÓNDE ESTAMOS</Text>
       <Text style={styles.title}>Dolores, Buenos Aires</Text>
       <Text style={styles.description}>
@@ -36,7 +43,13 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 24,
-    paddingBottom: 40,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    alignSelf: "center",
+    marginTop: 32,
+    marginBottom: 16,
   },
   label: {
     color: "#f97316",
@@ -44,7 +57,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     fontSize: 13,
     marginBottom: 8,
-    marginTop: 48,
+    marginTop: 16,
   },
   title: {
     color: "#fff",
@@ -71,4 +84,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 15,
   },
+  divider: {
+  height: 1,
+  backgroundColor: "#f97316",
+  width: "100%",
+  marginBottom: 24,
+  opacity: 0.4,
+},
 });
