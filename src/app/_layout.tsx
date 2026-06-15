@@ -20,6 +20,7 @@ export default function RootLayout() {
           shadowOpacity: 0.2,
           shadowOffset: { width: 0, height: 4 },
           shadowRadius: 8,
+          marginHorizontal: 12,
         },
         tabBarActiveTintColor: "#f97316",
         tabBarInactiveTintColor: "#6b7280",

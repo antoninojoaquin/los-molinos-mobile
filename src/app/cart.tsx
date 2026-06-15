@@ -59,10 +59,21 @@ export default function CartScreen() {
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     const productList = cart.map(item => `• ${item.name} x${item.quantity}`).join("\n");
-    const message = `¡Hola! estoy interesado en:\n${productList}\n\nPrecio total: $${total}\n¿Podemos coordinar los detalles?`;
-    Linking.openURL(`https://wa.me/542245502977?text=${encodeURIComponent(message)}`);
+    const message = "¡Hola! estoy interesado en:\n${productList}\n\nPrecio total: $${total}\n¿Podemos coordinar los detalles?";
+    const phone = "542245502977"
+
+    const whatsappUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`;
+    const webUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    const supported = await Linking.canOpenURL(whatsappUrl);
+
+    if (supported) {
+      Linking.openURL(whatsappUrl);
+    } else {
+      Linking.openURL(webUrl);
+    }
   };
 
   if (cart.length === 0) {
