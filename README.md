@@ -10,9 +10,9 @@ Aplicación móvil nativa diseñada para la digitalización, gestión y comercia
 
 | Catálogo de Productos | Mis Favoritos |
 | :---: | :---: |
-| <img src="/los-molinos-mobile/assets/images/products.png" width="250"> | <img src="/los-molinos-mobile/assets/images/favorites.png" width="250"> |
+| <img src="assets/images/products.png" width="250"> | <img src="assets/images/favorites.png" width="250"> |
 | **Carrito de Compras** | **Info y Contacto** |
-| <img src="/los-molinos-mobile/assets/images/cart.png" width="250"> | <img src="/los-molinos-mobile/assets/images/about.png" width="250"> |
+| <img src="assets/images/cart.png" width="250"> | <img src="assets/images/about.png" width="250"> |
 
 ---
 
@@ -21,25 +21,25 @@ Aplicación móvil nativa diseñada para la digitalización, gestión y comercia
 ### 🔍 Búsqueda y Filtrado Táctil
 Barra de búsqueda optimizada y filtros dinámicos diseñados específicamente para interacciones fluidas en pantallas móviles.
 <div align="center">
-  <img src="/los-molinos-mobile/assets/gifs/products.gif" width="300" alt="Búsqueda y Filtrado">
+  <img src="assets/gifs/products.gif" width="300" alt="Búsqueda y Filtrado">
 </div>
 
 ### ❤️ Gestión de Favoritos
 Sistema para que los usuarios puedan guardar sus productos preferidos para futuras compras, mejorando la retención.
 <div align="center">
-  <img src="/los-molinos-mobile/assets/gifs/favorites.gif" width="300" alt="Favoritos">
+  <img src="assets/gifs/favorites.gif" width="300" alt="Favoritos">
 </div>
 
 ### 🛒 Control de Stock y Conversión (Deep Linking)
 Lógica integrada con Firestore que limita la cantidad según el stock real. Al finalizar, utiliza un intent nativo (`whatsapp://send`) para agilizar el proceso de checkout.
 <div align="center">
-  <img src="/los-molinos-mobile/assets/gifs/cart.gif" width="300" alt="Control de Stock y Carrito">
+  <img src="assets/gifs/cart.gif" width="300" alt="Control de Stock y Carrito">
 </div>
 
 ### 📍 About & Contacto
 Sección institucional con la ubicación física del local (mediante intent a Google Maps) y formulario de contacto directo.
 <div align="center">
-  <img src="/los-molinos-mobile/assets/gifs/about.gif" width="300" alt="About y Contacto">
+  <img src="assets/gifs/about.gif" width="300" alt="About y Contacto">
 </div>
 
 ---
