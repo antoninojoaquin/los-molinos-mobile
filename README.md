@@ -69,7 +69,7 @@ Si deseas ejecutar el proyecto localmente en tu entorno de desarrollo:
 
 **1. Clonar el repositorio:**
 ```bash
-git clone https://github.com/antoninojoaquin/los-molinos-regionales-mobile.git
+git clone https://github.com/antoninojoaquin/los-molinos-mobile.git
 cd los-molinos-regionales-mobile
 ```
 
